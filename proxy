@@ -11,7 +11,7 @@ EOF
 exit 1
 fi
 
-cat > conf.d/$1.conf << EOF
+cat << EOF
 server {
     listen       80;
     server_name  $1;
@@ -19,7 +19,5 @@ server {
     location / {
         proxy_pass "$2";
     }
-
-    #access_log  /var/log/nginx/log/${1}.access.log  main;
 }
 EOF

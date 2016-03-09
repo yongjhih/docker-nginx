@@ -1,10 +1,32 @@
 ## Usage
 
 ```sh
-git clone https://github.com/yongjhih/docker-nginx
-./proxy parse.8tory.com http://localhost:1337 # optional
-./proxy parse-dashboard.8tory.com http://localhost:4040 # optional
+wget https://github.com/yongjhih/docker-nginx/raw/master/docker-compose.yml
 docker-compose up -d
+```
+
+## Live config
+
+```sh
+$ docker cp dockernginx_nginx_1:/etc/nginx/conf.d/default.conf default.conf
+$ cat >> default.conf
+server {
+    listen       80;
+    server_name  $1;
+
+    location / {
+        proxy_pass "$2";
+    }
+
+$ docker cp default.conf dockernginx_nginx_1:/etc/nginx/conf.d/default.conf
+$ docker exec -it dockernginx_nginx_1 kill -HUP 1 # restart nginx
+```
+
+## Dump
+
+```sh
+docker cp dockernginx_nginx_1:/etc/nginx/nginx.conf nginx.conf
+docker cp dockernginx_nginx_1:/etc/nginx/conf.d/default.conf default.conf
 ```
 
 ## About this Repo

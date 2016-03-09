@@ -1,7 +1,5 @@
 nginx:
   image: nginx
-  volumes:
-    - ./conf.d:/etc/nginx/conf.d
   volumes_from:
     - nginx-data
   ports:
