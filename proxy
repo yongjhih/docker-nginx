@@ -20,6 +20,6 @@ server {
         proxy_pass "$2";
     }
 
-    access_log  /var/log/nginx/log/${2}.access.log  main;
+    #access_log  /var/log/nginx/log/${1}.access.log  main;
 }
 EOF

@@ -6,6 +6,7 @@ nginx:
     - nginx-data
   ports:
     - "80:80"
+  net: host
 
 nginx-data:
   image: nginx
