@@ -12,11 +12,12 @@ $ docker cp dockernginx_nginx_1:/etc/nginx/conf.d/default.conf default.conf
 $ cat >> default.conf
 server {
     listen       80;
-    server_name  $1;
+    server_name  example.com;
 
     location / {
-        proxy_pass "$2";
+        proxy_pass "localhost:8080";
     }
+}
 
 $ docker cp default.conf dockernginx_nginx_1:/etc/nginx/conf.d/default.conf
 $ docker exec -it dockernginx_nginx_1 kill -HUP 1 # restart nginx
