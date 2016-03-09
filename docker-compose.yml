@@ -1,8 +1,16 @@
 nginx:
   image: nginx
   volumes:
-   - ./conf.d:/etc/nginx/conf.d
+    - ./conf.d:/etc/nginx/conf.d
+  volumes_from:
+    - nginx-data
   ports:
-   - "80:80"
+    - "80:80"
+
+nginx-data:
+  image: nginx
+  volumes:
+    - /var/log/nginx
+  command: ls /var/log/nginx
 
 # vim:set et ts=2 sw=2:

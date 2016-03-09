@@ -12,5 +12,7 @@ server {
     location / {
         proxy_pass "$2";
     }
+
+    access_log  /var/log/nginx/log/${2}.access.log  main;
 }
 EOF
