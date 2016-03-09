@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+if [ ! "$2" ];then
+    echo "Usage: $0 <FQDN> <URL>"
+fi
+
+cat > conf.d/$1.conf << EOF
+server {
+    listen       80;
+    server_name  $1;
+
+    location / {
+        proxy_pass "$2";
+    }
+}
+EOF
