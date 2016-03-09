@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Append nginx config lines from stdin
+# Usage: ./proxy kibana.8tory.twbbs.org http://localhost:5601 | docker-nginx-conf
+
+if [ ! -f "default.conf" ]; then
+    docker cp dockernginx_nginx_1:/etc/nginx/conf.d/default.conf default.conf
+fi
+
+cat >> default.conf && \
+docker cp default.conf dockernginx_nginx_1:/etc/nginx/conf.d/default.conf && \
+docker exec dockernginx_nginx_1 kill -HUP 1
