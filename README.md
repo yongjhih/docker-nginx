@@ -2,8 +2,8 @@
 
 ```sh
 git clone https://github.com/yongjhih/docker-nginx
-./proxy parse.8tory.com http://localhost:1337
-./proxy parse-dashboard.8tory.com http://localhost:4040
+./proxy parse.8tory.com http://localhost:1337 # optional
+./proxy parse-dashboard.8tory.com http://localhost:4040 # optional
 docker-compose up -d
 ```
 
