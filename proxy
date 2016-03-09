@@ -1,7 +1,14 @@
 #!/usr/bin/env bash
 
 if [ ! "$2" ];then
-    echo "Usage: $0 <FQDN> <URL>"
+    cat << EOF
+Usage: $0 <FQDN> <URL>
+
+For example:
+
+	$0 parse.example.com http://localhost:1337
+EOF
+exit 1
 fi
 
 cat > conf.d/$1.conf << EOF
